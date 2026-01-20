@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pars-gold: #D4AF37;
+  --pars-bronze: #CD7F32;
+  --pars-persian: #1C3879;
+  --pars-deep: #0A1628;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, #0A1628 0%, #1C3879 50%, #0A1628 100%);
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #CD7F32 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+}
