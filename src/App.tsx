@@ -4,6 +4,7 @@ import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { Governance } from './pages/Governance'
 import { Delegate } from './pages/Delegate'
+import { Staking } from './pages/Staking'
 import { Analytics } from './pages/Analytics'
 import { Docs } from './pages/Docs'
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/governance" element={<Governance />} />
           <Route path="/delegate" element={<Delegate />} />
+          <Route path="/staking" element={<Staking />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/docs" element={<Docs />} />
         </Routes>
