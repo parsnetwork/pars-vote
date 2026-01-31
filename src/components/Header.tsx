@@ -6,7 +6,10 @@ const navLinks = [
   { href: '/staking', label: 'Stake ASHA' },
   { href: '/delegate', label: 'Delegate' },
   { href: '/analytics', label: 'Analytics' },
-  { href: '/docs', label: 'Docs' },
+]
+
+const externalLinks = [
+  { href: 'https://pars-docs.pages.dev', label: 'Docs' },
 ]
 
 export function Header() {
@@ -38,6 +41,17 @@ export function Header() {
             >
               {link.label}
             </Link>
+          ))}
+          {externalLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-white/70 hover:text-white transition-colors"
+            >
+              {link.label}
+            </a>
           ))}
         </nav>
 
