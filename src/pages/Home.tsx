@@ -1,18 +1,23 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Vote, Users, FileText, BarChart3, Shield, Send } from 'lucide-react'
+import { ArrowRight, Vote, Users, FileText, Shield, Lock, Coins } from 'lucide-react'
 
 const stats = [
   { label: 'Active Proposals', value: '0', change: '---' },
-  { label: 'vePARS Voters', value: '0', change: '---' },
+  { label: 'veASHA Stakers', value: '0', change: '---' },
   { label: 'Total Votes Cast', value: '0', change: '---' },
-  { label: 'Delegated Power', value: '0', change: '---' },
+  { label: 'ASHA Staked', value: '0', change: '---' },
 ]
 
 const features = [
   {
+    icon: Lock,
+    title: 'Stake ASHA',
+    description: 'Lock ASHA to receive veASHA governance power. Longer locks provide higher voting weight and APR.',
+  },
+  {
     icon: Vote,
     title: 'Cast Your Vote',
-    description: 'Vote on MIGA Improvement Proposals across all ten DAOs. Your vePARS weight determines your influence.',
+    description: 'Vote on MIGA Improvement Proposals across all ten DAOs. Your veASHA weight determines your influence.',
   },
   {
     icon: FileText,
@@ -22,22 +27,17 @@ const features = [
   {
     icon: Users,
     title: 'Delegate Power',
-    description: 'Delegate your vePARS to trusted representatives. Earn delegation rewards for active participation.',
+    description: 'Delegate your veASHA to trusted representatives. Earn delegation rewards for active participation.',
   },
   {
-    icon: BarChart3,
-    title: 'Governance Analytics',
-    description: 'Track voting patterns, participation rates, and governance health metrics across the ecosystem.',
+    icon: Coins,
+    title: 'Earn Rewards',
+    description: 'veASHA holders earn PARS emissions and protocol revenue. Rewards compound automatically.',
   },
   {
     icon: Shield,
     title: 'Shielded Voting',
     description: 'Privacy-preserving votes on Lux T-Chain. Your preferences remain confidential until results.',
-  },
-  {
-    icon: Send,
-    title: 'Multi-Chain Execution',
-    description: 'Proposals execute across Ethereum, Arbitrum, Base, Polygon, and Lux Network simultaneously.',
   },
 ]
 
@@ -56,22 +56,22 @@ export function Home() {
           </h1>
 
           <p className="text-xl text-white/70 max-w-2xl mx-auto mb-10">
-            Vote on proposals, delegate power, and shape the future of the MIGA Protocol with your vePARS.
+            Stake ASHA to earn veASHA governance power. Vote on proposals, delegate power, and shape the future of the MIGA Protocol.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/governance"
+              to="/staking"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pars-gold to-pars-bronze text-pars-deep font-semibold rounded-lg hover:opacity-90 transition-opacity"
             >
-              View Proposals
+              Stake ASHA
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              to="/delegate"
+              to="/governance"
               className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-semibold rounded-lg hover:bg-white/5 transition-colors"
             >
-              Delegate Power
+              View Proposals
             </Link>
           </div>
         </div>
@@ -97,24 +97,24 @@ export function Home() {
         <div className="container mx-auto px-4">
           <div className="glass-card p-8 md:p-12 max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-              Governance Power
+              veASHA Governance Power
             </h2>
             <div className="bg-pars-deep/50 rounded-lg p-6 font-mono text-center mb-6">
-              <p className="text-xl md:text-2xl text-pars-gold">
-                Vote Weight = vePARS Balance at Snapshot Block
+              <p className="text-lg md:text-xl text-pars-gold">
+                veASHA = ASHA × √(karma/100) × (1 + lock_months × 0.1)
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
                 <p className="text-pars-gold font-semibold mb-2">Snapshot Voting</p>
                 <p className="text-white/70 text-sm">
-                  Votes are weighted by your vePARS at proposal creation time.
+                  Votes are weighted by your veASHA at proposal creation time.
                 </p>
               </div>
               <div>
-                <p className="text-pars-gold font-semibold mb-2">Quadratic Influence</p>
+                <p className="text-pars-gold font-semibold mb-2">Karma Multiplier</p>
                 <p className="text-white/70 text-sm">
-                  Square root formula prevents plutocratic capture of governance.
+                  Active participation increases your karma score and voting power.
                 </p>
               </div>
               <div>

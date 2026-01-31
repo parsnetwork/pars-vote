@@ -3,6 +3,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 const navLinks = [
   { href: '/governance', label: 'Proposals' },
+  { href: '/staking', label: 'Stake ASHA' },
   { href: '/delegate', label: 'Delegate' },
   { href: '/analytics', label: 'Analytics' },
   { href: '/docs', label: 'Docs' },
