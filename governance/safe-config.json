@@ -1,0 +1,53 @@
+{
+  "network": {
+    "name": "Pars Network EVM",
+    "chainId": 494949,
+    "rpcUrl": "https://rpc.pars.network",
+    "explorerUrl": "https://explorer.pars.network",
+    "type": "Lux L2",
+    "note": "Initially deployed as Lux L2, can upgrade to L1 later"
+  },
+  "safe": {
+    "name": "PARS DAO Multisig",
+    "version": "1.4.1",
+    "threshold": 3,
+    "owners": [
+      {
+        "address": "0x35D64Ff3f618f7a17DF34DCb21be375A4686a8de",
+        "index": 0,
+        "role": "Signer 1"
+      },
+      {
+        "address": "0xdAF82928dE0ABBAE133322020B253283d335d3A8",
+        "index": 1,
+        "role": "Signer 2"
+      },
+      {
+        "address": "0xBb5D7C55DbbB353f9e7667dbCC43B228B857998a",
+        "index": 2,
+        "role": "Signer 3"
+      },
+      {
+        "address": "0x6828eAa708F40c11C121C25BdbB4a6fd1415fB24",
+        "index": 3,
+        "role": "Signer 4"
+      },
+      {
+        "address": "0xa238C9E15C4AD9b10441fe9f7afFa6A131F4Cc37",
+        "index": 4,
+        "role": "Signer 5"
+      }
+    ],
+    "note": "3-of-5 multisig derived from mnemonic: light light light light light light light light light light light energy"
+  },
+  "contracts": {
+    "safeProxyFactory": null,
+    "safeSingleton": null,
+    "safeAddress": null
+  },
+  "governance": {
+    "token": "PARS",
+    "treasury": null,
+    "note": "Native L2 network token governance"
+  }
+}
