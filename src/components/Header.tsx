@@ -1,15 +1,18 @@
 import { Link, useLocation } from 'react-router-dom'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { CommandPalette } from './CommandPalette'
 
 const navLinks = [
+  { href: '/dao-network', label: 'Committees' },
   { href: '/governance', label: 'Proposals' },
-  { href: '/staking', label: 'Stake ASHA' },
+  { href: '/bond', label: 'Bond' },
+  { href: '/staking', label: 'Stake' },
   { href: '/delegate', label: 'Delegate' },
   { href: '/analytics', label: 'Analytics' },
 ]
 
 const externalLinks = [
-  { href: 'https://pars-docs.pages.dev', label: 'Docs' },
+  { href: 'https://docs.pars.vote', label: 'Docs' },
 ]
 
 export function Header() {
@@ -56,6 +59,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          <CommandPalette />
           <ConnectButton
             accountStatus="address"
             chainStatus="icon"

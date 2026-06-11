@@ -1,6 +1,17 @@
 import { getDefaultConfig } from '@rainbow-me/rainbowkit'
 import { mainnet, arbitrum, base, polygon } from 'wagmi/chains'
 
+// Local Anvil (for E2E testing)
+const localhost = {
+  id: 96370,
+  name: 'Localhost (Anvil)',
+  nativeCurrency: { name: 'LUX', symbol: 'LUX', decimals: 18 },
+  rpcUrls: {
+    default: { http: ['http://127.0.0.1:8545'] },
+  },
+  testnet: true,
+} as const
+
 // Lux Network chain configurations
 const luxMainnet = {
   id: 96369,
@@ -27,32 +38,47 @@ const luxDevnet = {
   testnet: true,
 } as const
 
+// Use localhost for development, devnet for staging
+const isDev = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+
 export const wagmiConfig = getDefaultConfig({
   appName: 'PARS Vote',
   projectId: process.env.VITE_WALLET_CONNECT_PROJECT_ID || 'pars-vote',
-  chains: [luxDevnet, luxMainnet, mainnet, arbitrum, base, polygon],
+  chains: isDev ? [localhost, luxDevnet, luxMainnet, mainnet, arbitrum, base, polygon] : [luxDevnet, luxMainnet, mainnet, arbitrum, base, polygon],
   ssr: false,
 })
+
+// Contract addresses - Local Anvil (for E2E testing)
+export const CONTRACTS_LOCAL = {
+  ASHA: '0x5FbDB2315678afecb367f032d93F642f64180aa3',
+  veASHA: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512',
+  Governor: '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0',
+  VotesToken: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // Same as veASHA
+  vLUX: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512', // Same as veASHA for testing
+} as const
 
 // Contract addresses - Lux Devnet (Chain ID: 96370)
 export const CONTRACTS = {
   luxDevnet: {
     // Core Governance
-    Governor: '0x6fc44509a32E513bE1aa00d27bb298e63830C6A8',
+    Governor: isDev ? CONTRACTS_LOCAL.Governor : '0x6fc44509a32E513bE1aa00d27bb298e63830C6A8',
     Timelock: '0x80f3bd0Bdf7861487dDDA61bc651243ecB8B5072',
     VotingLUX: '0x43222597839515180E7aD564C94a3b5c16EB987C',
-    vLUX: '0x91954cf6866d557C5CA1D2f384D204bcE9DFfd5a',
+    vLUX: isDev ? CONTRACTS_LOCAL.vLUX : '0x91954cf6866d557C5CA1D2f384D204bcE9DFfd5a',
     DLUX: '0x316520ca05eaC5d2418F562a116091F1b22Bf6e0',
     Karma: '0x97c265001EB088E1dE2F77A13a62B708014c9e68',
     GaugeController: '0x26328AC03d07BD9A7Caaafbde39F9b56B5449240',
     Strategy: '0x4EC24Da7d598CAC1540F2E8078D05869e36a4ef1',
-    VotesToken: '0xE77E1cB5E303ed0EcB10d0d13914AaA2ED9B3b8C',
+    VotesToken: isDev ? CONTRACTS_LOCAL.VotesToken : '0xE77E1cB5E303ed0EcB10d0d13914AaA2ED9B3b8C',
     // Sub-DAOs for Pars
     MIGASubDAO: '0x0000000000000000000000000000000000000000', // TODO: Deploy
     CYRUSSubDAO: '0x0000000000000000000000000000000000000000', // TODO: Deploy
     // Core Tokens
     WLUX: '0xc65ea8882020Af7CDa7854d590C6Fcd34BF364ec',
     StakedLUX: '0x191067f88d61f9506555E88CEab9CF71deeD61A9',
+    ASHA: isDev ? CONTRACTS_LOCAL.ASHA : '0x0000000000000000000000000000000000000000',
+    veASHA: isDev ? CONTRACTS_LOCAL.veASHA : '0x0000000000000000000000000000000000000000',
+    USDC: '0x0000000000000000000000000000000000000000', // TODO: Deploy/bridge USDC
     // DeFi
     Markets: '0x6fc44509a32E513bE1aa00d27bb298e63830C6A8',
     Perp: '0xb2ee1CE7b84853b83AA08702aD0aD4D79711882D',
@@ -63,6 +89,10 @@ export const CONTRACTS = {
     Cover: '0x92d057F8B4132Ca8Aa237fbd4C41F9c57079582E',
     // Treasury
     TreasuryRouter: '0xF9aEC94ED6F098509EbCD5690AE2Cb126cd8a3Ee',
+    // Bonds (OlympusDAO-style)
+    Bond: '0x0000000000000000000000000000000000000000', // TODO: Deploy Bond.sol
+    BondDepository: '0x0000000000000000000000000000000000000000', // TODO: Deploy
+    BondTeller: '0x0000000000000000000000000000000000000000', // TODO: Deploy
   },
   luxMainnet: {
     Governor: '0x0000000000000000000000000000000000000000', // TODO: Deploy to mainnet
@@ -70,6 +100,12 @@ export const CONTRACTS = {
     VotingLUX: '0x0000000000000000000000000000000000000000',
     vLUX: '0x0000000000000000000000000000000000000000',
     DLUX: '0x0000000000000000000000000000000000000000',
+    ASHA: '0x0000000000000000000000000000000000000000',
+    veASHA: '0x0000000000000000000000000000000000000000',
+    USDC: '0x0000000000000000000000000000000000000000',
+    Bond: '0x0000000000000000000000000000000000000000',
+    BondDepository: '0x0000000000000000000000000000000000000000',
+    BondTeller: '0x0000000000000000000000000000000000000000',
   },
   mainnet: {
     MIGASubDAO: '0x0000000000000000000000000000000000000000', // TODO: Deploy
