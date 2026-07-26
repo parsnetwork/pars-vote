@@ -1,7 +1,7 @@
 {
   "network": {
     "name": "Pars Network EVM",
-    "chainId": 7070,
+    "chainId": 494949,
     "rpcUrl": "https://rpc.pars.network",
     "explorerUrl": "https://explorer.pars.network",
     "type": "Lux L2",
