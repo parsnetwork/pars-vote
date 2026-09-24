@@ -71,12 +71,12 @@ importers:
       '@hanzogui/web':
         specifier: ^8.3.1
         version: 8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@luxdao/app':
+        specifier: github:luxdao/app#5329fd5cd735e2dd43cda3b34e51edc4ad15744d
+        version: https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d(tshxov3nnfbpscrzb7mg24ppiu)
       '@luxfi/contracts':
         specifier: ^1.7.2
         version: 1.7.2(ethers@5.4.0)
-      '@luxfi/vote':
-        specifier: github:luxfi/vote#fbd5f08
-        version: git+https://git@github.com:luxfi/vote.git#fbd5f08(tshxov3nnfbpscrzb7mg24ppiu)
       '@luxwallet/chains':
         specifier: ^0.1.1
         version: 0.1.1
@@ -667,6 +667,7 @@ packages:
 
   '@hanzo/tokens@1.0.2':
     resolution: {integrity: sha512-e4Oz4f+6uSPJKqVrHEpyF4t78sI3hhZzD9mgwuxItS2xaKHFkFk8IHbWAcb91oel4Wdh2uPd7sTU3QawH6lRSA==}
+    deprecated: Absorbed into @hanzo/design, which publishes the same tokens as CSS custom properties and typed exports.
 
   '@hanzo/ui@8.27.7':
     resolution: {integrity: sha512-Kyk9YoCzjX0O39h8+ZahbFGZv4Lqr0iJRvN0UlUWoeY+Y8CPcEhvKB00LUcjs8mXA5yEFgrL74dZx3aFsEQ9AQ==}
@@ -1426,13 +1427,13 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
+  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d':
+    resolution: {tarball: https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d}
+    version: 0.1.2
+
   '@luxfi/contracts@1.7.2':
     resolution: {integrity: sha512-nMYQg9xbn91OKvl+t7H8ip3UJqJkaoF0BfFpaaFuQDA3MuCRMQVcqEKkQZ64nrq99gG00ZEpAMYwBYtflunHSg==}
     engines: {node: '>=18.0.0'}
-
-  '@luxfi/vote@git+https://git@github.com:luxfi/vote.git#fbd5f08':
-    resolution: {commit: fbd5f08, repo: git@github.com:luxfi/vote.git, type: git}
-    version: 0.1.0
 
   '@luxwallet/chains@0.1.1':
     resolution: {integrity: sha512-kL51yni9joaaL/RrTElCgNfEWNodHx9QzyOI4Dub+pDZpnfG0uVz3YPoNXGQWYb64/HdFiN4nG1nI7X69gumCQ==}
@@ -5368,22 +5369,13 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@luxfi/contracts@1.7.2(ethers@5.4.0)':
-    dependencies:
-      '@openzeppelin/contracts': 5.6.1
-      '@openzeppelin/contracts-upgradeable': 5.6.1(@openzeppelin/contracts@5.6.1)
-      '@safe-global/safe-contracts': 1.4.1(ethers@5.4.0)
-    transitivePeerDependencies:
-      - ethers
-
-  '@luxfi/vote@git+https://git@github.com:luxfi/vote.git#fbd5f08(tshxov3nnfbpscrzb7mg24ppiu)':
+  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d(tshxov3nnfbpscrzb7mg24ppiu)':
     dependencies:
       '@hanzo/appearance': 0.2.2(react@19.2.8)
       '@hanzo/design': 0.5.25
       '@hanzo/font': 1.9.3(next@16.3.4(@babel/core@7.29.7)(@types/node@22.20.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
       '@hanzo/gui': 8.3.1(react-dom@19.2.8(react@19.2.8))(react-native@0.87.1(@babel/core@7.29.7)(@react-native/metro-config@0.87.1(@babel/core@7.29.7))(@types/react@19.2.8)(react@19.2.8))(react@19.2.8)
       '@hanzo/iam': 0.21.18(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      '@hanzo/tokens': 1.0.2
       '@hanzo/ui': 8.27.7(c6xphhch376qr6uxjc5puhec2a)
       '@hanzogui/button': 8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@hanzogui/card': 8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -5432,6 +5424,14 @@ snapshots:
       - typescript
       - utf-8-validate
       - zod
+
+  '@luxfi/contracts@1.7.2(ethers@5.4.0)':
+    dependencies:
+      '@openzeppelin/contracts': 5.6.1
+      '@openzeppelin/contracts-upgradeable': 5.6.1(@openzeppelin/contracts@5.6.1)
+      '@safe-global/safe-contracts': 1.4.1(ethers@5.4.0)
+    transitivePeerDependencies:
+      - ethers
 
   '@luxwallet/chains@0.1.1': {}
 

@@ -1,7 +1,7 @@
 import type { Address } from 'viem'
-import type { Venue } from '@luxfi/vote/gov/chain'
-import { client } from '@luxfi/vote/gov/client'
-import { absent, failed, read, unrecorded, type Read } from '@luxfi/vote/gov/read'
+import type { Venue } from '@luxdao/app/gov/chain'
+import { client } from '@luxdao/app/gov/client'
+import { absent, failed, read, unrecorded, type Read } from '@luxdao/app/gov/read'
 
 /**
  * Where Pars's own contracts are, and the honest answer today: nowhere.

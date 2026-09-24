@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { KEY as theirs, boot as their } from '@luxfi/vote/chrome/boot'
+import { KEY as theirs, boot as their } from '@luxdao/app/chrome/boot'
 import { KEY as ours, boot as our } from './boot'
 
 /**

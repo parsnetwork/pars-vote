@@ -1,7 +1,7 @@
 /**
  * The head script, restated — and the one duplication in this fork.
  *
- * `@luxfi/vote/chrome/boot` is the same four lines and would be imported here
+ * `@luxdao/app/chrome/boot` is the same four lines and would be imported here
  * if it could be. It cannot: the stack publishes TypeScript source, and node
  * refuses to strip types from a file under `node_modules` — which is where a
  * dependency's source lives and where a vite config's imports are resolved from

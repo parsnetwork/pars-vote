@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import { GuiProvider } from '@hanzo/gui'
 import { IamProvider } from '@hanzo/iam/react'
-import { Returning } from '@luxfi/vote/chrome/account'
-import { add, brand } from '@luxfi/vote/chrome/brand'
-import { gui } from '@luxfi/vote/chrome/gui'
-import * as id from '@luxfi/vote/chrome/id'
-import * as theme from '@luxfi/vote/chrome/theme'
+import { Returning } from '@luxdao/app/chrome/account'
+import { add, brand } from '@luxdao/app/chrome/brand'
+import { gui } from '@luxdao/app/chrome/gui'
+import * as id from '@luxdao/app/chrome/id'
+import * as theme from '@luxdao/app/chrome/theme'
 import App from './app'
 import { PARS } from './brand'
 // The type ramp the design system multiplies. `@hanzo/design` publishes
@@ -22,7 +22,7 @@ import '@hanzo/design/styles.css'
 // lives here. Without this line every pending read is a static grey box — the
 // shape of a loading state with none of the signal.
 import '@hanzo/ui/styles/motion.css'
-import '@luxfi/vote/ground.css'
+import '@luxdao/app/ground.css'
 
 /**
  * The one statement that has to run before anything else.
@@ -70,9 +70,28 @@ function Surface() {
   )
 }
 
-// Which site this is. index.html carries "Vote" alone because a preview URL and
-// a bare address reach the same bundle under no name at all.
-document.title = `${brand().name} Vote`
+/**
+ * What the browser's own chrome shows: the tenant's name and the tenant's mark.
+ *
+ * index.html carries "Vote" alone and no icon, because a preview URL and a bare
+ * address reach the same bundle under no name at all.
+ */
+function head(): void {
+  const it = brand()
+  document.title = `${it.name} Vote`
+  for (const [rel, href, type] of [
+    ['icon', it.icon.svg, 'image/svg+xml'],
+    ['apple-touch-icon', it.icon.touch, undefined],
+  ] as const) {
+    const link =
+      document.querySelector(`link[rel="${rel}"]`) ??
+      document.head.appendChild(Object.assign(document.createElement('link'), { rel }))
+    link.setAttribute('href', href)
+    if (type) link.setAttribute('type', type)
+  }
+}
+
+head()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

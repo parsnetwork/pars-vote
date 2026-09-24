@@ -1,8 +1,8 @@
 import { YStack } from '@hanzogui/stacks'
 import { Paragraph } from '@hanzogui/text'
-import { Panel } from '@luxfi/vote/parts/panel'
-import { quiet } from '@luxfi/vote/parts/paint'
-import { Escrow } from '@luxfi/vote/routes/Stake'
+import { Panel } from '@luxdao/app/parts/panel'
+import { quiet } from '@luxdao/app/parts/paint'
+import { Escrow } from '@luxdao/app/routes/Stake'
 import { MAX_MONTHS, MIN_MONTHS, VEASHA, returned, surplus, weight } from '../read/ve'
 
 const ONE = 10n ** 18n

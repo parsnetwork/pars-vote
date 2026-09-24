@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 import { Route } from 'react-router'
-import App, { screen } from '@luxfi/vote'
-import type { Place } from '@luxfi/vote/chrome/nav'
+import App, { screen } from '@luxdao/app'
+import type { Place } from '@luxdao/app/chrome/nav'
 
 /**
  * pars.vote: the stack, plus the screens only Pars has.

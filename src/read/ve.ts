@@ -1,5 +1,5 @@
-import type { Venue } from '@luxfi/vote/gov/chain'
-import type { Ve } from '@luxfi/vote/read/ve'
+import type { Venue } from '@luxdao/app/gov/chain'
+import type { Ve } from '@luxdao/app/read/ve'
 import * as abi from '../abi'
 import { sited } from '../at'
 
@@ -23,7 +23,7 @@ import { sited } from '../at'
  *     carries the delegation the base token's does.
  *
  * MOVING TO THE GENERIC ESCROW: `luxfi/standard` now ships `VeVotes`, and
- * `@luxfi/vote` binds it as `VOTES` — one lock per account, power that decays
+ * `@luxdao/app` binds it as `VOTES` — one lock per account, power that decays
  * linearly, `lock(amount, duration)` for all three of create, add and extend.
  * It is the better contract: it has an add that does not move the end, and it
  * pays back what was deposited rather than at a rate fixed to the shortest

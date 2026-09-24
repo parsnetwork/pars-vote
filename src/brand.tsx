@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
-import type { Brand } from '@luxfi/vote/chrome/brand'
-import { venue } from '@luxfi/vote/gov/chain'
+import type { Brand } from '@luxdao/app/chrome/brand'
+import { venue } from '@luxdao/app/gov/chain'
 
 /**
  * pars.vote, as a tenant of the stack.
@@ -75,6 +75,11 @@ export const PARS: Brand = {
   // The mark is a glyph and says nothing, so the word carries the name.
   word: 'Pars Vote',
   mark: Pars,
+  // A glyph already, so the corner and the lockup are one drawing.
+  glyph: Pars,
+  // Served from this site's own root: the tab is the one surface where a
+  // mark is the host's to choose, and pars.vote's is the khatam.
+  icon: { svg: '/favicon.svg', touch: '/icon-180.png' },
   venue: on('pars'),
   // Pars's own IAM, and the only thing that says who a reader is. Measured
   // rather than assumed from the estate's naming: pars.id serves an OpenID

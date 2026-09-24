@@ -22,13 +22,13 @@ const engine = readdirSync(new URL('./node_modules/@hanzogui', import.meta.url))
 /**
  * The stack, as a directory.
  *
- * `@luxfi/vote` publishes TypeScript source by subpath rather than a build, so
+ * `@luxdao/app` publishes TypeScript source by subpath rather than a build, so
  * vite has to compile it rather than treat it as a dependency it can leave
  * alone. Resolved through the package's own entry so this does not encode where
  * the package manager put it.
  */
 const require = createRequire(import.meta.url)
-const stack = dirname(require.resolve('@luxfi/vote/package.json'))
+const stack = dirname(require.resolve('@luxdao/app/package.json'))
 
 /**
  * Puts the two settings that must precede first paint in <head>, ahead of the
@@ -74,7 +74,7 @@ export default defineConfig(({ mode }) => ({
   optimizeDeps: {
     // The stack is source, so it is compiled with this app rather than
     // pre-bundled as a dependency.
-    exclude: ['@luxfi/vote'],
+    exclude: ['@luxdao/app'],
     include: ['react-native-web', '@react-native/normalize-color', '@hanzo/gui', '@hanzogui/core'],
   },
   server: {

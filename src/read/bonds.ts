@@ -1,7 +1,7 @@
 import type { Address } from 'viem'
-import type { Venue } from '@luxfi/vote/gov/chain'
-import { reader } from '@luxfi/vote/gov/client'
-import { attempt, type Read } from '@luxfi/vote/gov/read'
+import type { Venue } from '@luxdao/app/gov/chain'
+import { reader } from '@luxdao/app/gov/client'
+import { attempt, type Read } from '@luxdao/app/gov/read'
 import * as abi from '../abi'
 import { sited } from '../at'
 
