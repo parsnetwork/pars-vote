@@ -7,10 +7,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- The tenant's name is added by main.tsx. This file is served to a
-         preview URL and a bare address as well as to pars.vote, and naming the
-         site here would put it in the tab of a host that is not it. -->
-    <title>Vote</title>
+    <!-- This bundle is pars.vote and nothing else: Pars is the only tenant its
+         entry registers, so the name is written here for the readers that never
+         run the script — a crawler, a link preview, a bookmark. -->
+    <title>Pars Vote</title>
+    <meta name="description" content="Pars governance: proposals, voting power, treasury, bonds and the network of committees, read from the Pars chain." />
+    <link rel="canonical" href="https://pars.vote/" />
+    <link rel="icon" type="image/svg+xml" href="/src/khatam.svg" />
+    <link rel="apple-touch-icon" href="/icon-180.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pars Vote" />
+    <meta property="og:title" content="Pars Vote" />
+    <meta property="og:description" content="Pars governance: proposals, voting power, treasury, bonds and the network of committees, read from the Pars chain." />
+    <meta property="og:url" content="https://pars.vote/" />
+    <meta property="og:image" content="https://pars.vote/icon-180.png" />
+    <meta name="twitter:card" content="summary" />
   </head>
   <body>
     <div id="root"></div>

@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router'
 import { GuiProvider } from '@hanzo/gui'
 import { IamProvider } from '@hanzo/iam/react'
 import { Returning } from '@luxdao/app/chrome/account'
-import { add, brand } from '@luxdao/app/chrome/brand'
+import { add } from '@luxdao/app/chrome/brand'
 import { gui } from '@luxdao/app/chrome/gui'
 import * as id from '@luxdao/app/chrome/id'
 import * as theme from '@luxdao/app/chrome/theme'
@@ -69,29 +69,6 @@ function Surface() {
     </GuiProvider>
   )
 }
-
-/**
- * What the browser's own chrome shows: the tenant's name and the tenant's mark.
- *
- * index.html carries "Vote" alone and no icon, because a preview URL and a bare
- * address reach the same bundle under no name at all.
- */
-function head(): void {
-  const it = brand()
-  document.title = `${it.name} Vote`
-  for (const [rel, href, type] of [
-    ['icon', it.icon.svg, 'image/svg+xml'],
-    ['apple-touch-icon', it.icon.touch, undefined],
-  ] as const) {
-    const link =
-      document.querySelector(`link[rel="${rel}"]`) ??
-      document.head.appendChild(Object.assign(document.createElement('link'), { rel }))
-    link.setAttribute('href', href)
-    if (type) link.setAttribute('type', type)
-  }
-}
-
-head()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

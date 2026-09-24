@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import type { Brand } from '@luxdao/app/chrome/brand'
 import { identity, type Venue } from '@luxdao/app/gov/chain'
 import { ISSUER, RPC } from './hosts'
+import khatam from './khatam.svg'
 
 /**
  * pars.vote, as a tenant of the stack: its name, its mark, its chain and its
@@ -83,9 +84,10 @@ export const PARS: Brand = {
   mark: Pars,
   // A glyph already, so the corner and the lockup are one drawing.
   glyph: Pars,
-  // Served from this site's own root: the tab is the one surface where a
-  // mark is the host's to choose, and pars.vote's is the khatam.
-  icon: { svg: '/favicon.svg', touch: '/icon-180.png' },
+  // This site's own file: the tab is the one surface where a mark is the
+  // host's to choose, and pars.vote's is the khatam. Content-addressed, so a
+  // cache holding an earlier mark under a fixed name cannot keep showing it.
+  icon: { svg: khatam, touch: '/icon-180.png' },
   venue: CHAIN,
   issuer: ISSUER,
 }

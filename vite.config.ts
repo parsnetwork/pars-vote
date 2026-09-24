@@ -1,9 +1,11 @@
+import { createHash } from 'node:crypto'
 import { createRequire } from 'node:module'
 import { readdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { bootScript } from '@hanzo/appearance/state'
 import { boot } from './src/boot.js'
+import { policy } from './src/policy.js'
 import { defineConfig, type Plugin } from 'vite'
 
 /**
@@ -47,8 +49,37 @@ function head(): Plugin {
   }
 }
 
+/**
+ * Writes the Content-Security-Policy into the built page, ahead of everything
+ * it governs.
+ *
+ * Here rather than at the ingress because the policy names the hashes of the
+ * head's inline scripts, and those are a fact about this build: a policy kept
+ * anywhere else goes stale the first time `@hanzo/appearance` changes its boot
+ * script, and the page draws once at the published reading and again at the
+ * reader's. Last, so it hashes the scripts every other plugin has put there.
+ * Build only: the dev server injects its own client and would be refused.
+ */
+function csp(): Plugin {
+  const digest = (text: string) => createHash('sha256').update(text).digest('base64')
+  return {
+    name: 'content-security-policy',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        const inline = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]!)
+        const meta = `<meta http-equiv="Content-Security-Policy" content="${policy(inline, digest)}" />`
+        const charset = /<meta charset="utf-8" \/>/
+        if (!charset.test(html)) throw new Error('index.html has no charset meta to place the policy after.')
+        return html.replace(charset, (m) => `${m}\n    ${meta}`)
+      },
+    },
+  }
+}
+
 export default defineConfig(({ mode }) => ({
-  plugins: [react(), head()],
+  plugins: [react(), head(), csp()],
   define: {
     __DEV__: mode !== 'production',
     'process.env.NODE_ENV': JSON.stringify(mode === 'production' ? 'production' : 'development'),
@@ -70,7 +101,13 @@ export default defineConfig(({ mode }) => ({
   // The engine and its web shim reach React through CommonJS. Split into their
   // own chunk they resolve a different copy and `createContext` is undefined at
   // first paint.
-  build: { commonjsOptions: { include: [/node_modules/] } },
+  build: {
+    commonjsOptions: { include: [/node_modules/] },
+    // An SVG stays a file. Inlined, the tab's mark would be a data: URI in the
+    // head, which a favicon fetcher does not follow; as a file its name is its
+    // content hash, so no cache can keep serving an earlier mark under it.
+    assetsInlineLimit: (file) => (file.endsWith('.svg') ? false : undefined),
+  },
   optimizeDeps: {
     // The stack is source, so it is compiled with this app rather than
     // pre-bundled as a dependency.
