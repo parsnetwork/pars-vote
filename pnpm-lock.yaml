@@ -72,8 +72,8 @@ importers:
         specifier: ^8.3.1
         version: 8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@luxdao/app':
-        specifier: github:luxdao/app#5329fd5cd735e2dd43cda3b34e51edc4ad15744d
-        version: https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d(tshxov3nnfbpscrzb7mg24ppiu)
+        specifier: github:luxdao/app#040446aeae9872e128cf9446198e71ef3cc8cb66
+        version: https://codeload.github.com/luxdao/app/tar.gz/040446aeae9872e128cf9446198e71ef3cc8cb66(tshxov3nnfbpscrzb7mg24ppiu)
       '@luxfi/contracts':
         specifier: ^1.7.2
         version: 1.7.2(ethers@5.4.0)
@@ -1427,8 +1427,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d':
-    resolution: {tarball: https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d}
+  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/040446aeae9872e128cf9446198e71ef3cc8cb66':
+    resolution: {tarball: https://codeload.github.com/luxdao/app/tar.gz/040446aeae9872e128cf9446198e71ef3cc8cb66}
     version: 0.1.2
 
   '@luxfi/contracts@1.7.2':
@@ -5369,7 +5369,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
 
-  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/5329fd5cd735e2dd43cda3b34e51edc4ad15744d(tshxov3nnfbpscrzb7mg24ppiu)':
+  '@luxdao/app@https://codeload.github.com/luxdao/app/tar.gz/040446aeae9872e128cf9446198e71ef3cc8cb66(tshxov3nnfbpscrzb7mg24ppiu)':
     dependencies:
       '@hanzo/appearance': 0.2.2(react@19.2.8)
       '@hanzo/design': 0.5.25

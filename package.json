@@ -35,7 +35,7 @@
     "@hanzogui/text": "^8.3.1",
     "@hanzogui/themes": "^8.3.1",
     "@hanzogui/web": "^8.3.1",
-    "@luxdao/app": "github:luxdao/app#5329fd5cd735e2dd43cda3b34e51edc4ad15744d",
+    "@luxdao/app": "github:luxdao/app#040446aeae9872e128cf9446198e71ef3cc8cb66",
     "@luxfi/contracts": "^1.7.2",
     "@luxwallet/chains": "^0.1.1",
     "@luxwallet/connect": "^0.2.1",
