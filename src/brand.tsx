@@ -1,20 +1,18 @@
 import type { ReactElement } from 'react'
 import type { Brand } from '@luxdao/app/chrome/brand'
-import { venue } from '@luxdao/app/gov/chain'
+import { identity, type Venue } from '@luxdao/app/gov/chain'
+import { ISSUER, RPC } from './hosts'
 
 /**
- * pars.vote, as a tenant of the stack.
+ * pars.vote, as a tenant of the stack: its name, its mark, its chain and its
+ * IAM, declared here and nowhere else.
  *
- * The stack serves lux.vote, zoo.vote and hanzo.vote from one bundle and keeps
- * its tenant list open; this is the entry that adds a fourth site. Pars is a
- * fork rather than a fourth name on that bundle because it adds SCREENS — an
- * escrow on its own token, a bond market, a network of committees — and a
- * tenant flag on a screen only one site draws is how one app becomes two apps
- * sharing a binary.
- *
- * The chain comes from the stack's own registry rather than being restated
- * here. Two records of one chain id is how a devnet address comes to be
- * advertised as mainnet.
+ * The stack names no tenant in anything a fork imports — its own three are
+ * registered by its own entry — so this file is the only site a bundle built
+ * from this fork carries. Pars is a fork rather than a fourth name on the
+ * stack's bundle because it adds SCREENS — an escrow on its own token, a bond
+ * market, a network of committees — and a tenant flag on a screen only one site
+ * draws is how one app becomes two apps sharing a binary.
  */
 
 /**
@@ -57,16 +55,24 @@ function Pars({ height = 20 }: { height?: number }): ReactElement {
 }
 
 /**
- * The chain, from the stack's registry.
+ * Pars's chain, and the one record of it.
  *
- * Throws rather than falling back. A tenant whose chain is missing would
- * otherwise open on somebody else's governor and report real figures about the
- * wrong DAO — the one failure a reader cannot detect.
+ * Two records name two different Bounties here. This is the one in
+ * deployments/l2-mainnet/pars.json; the DAO repo names another, and that file
+ * marks its own work-market block superseded. An address is a candidate, never
+ * a claim: `presence()` asks the chain and the screens say what it answers.
  */
-function on(key: string) {
-  const v = venue(key)
-  if (!v) throw new Error(`No venue "${key}" in the stack's registry.`)
-  return v
+const CHAIN: Venue = {
+  id: 494949,
+  key: 'pars',
+  ...identity(494949, { name: 'Pars', symbol: 'PARS' }),
+  rpc: RPC,
+  explorer: 'https://explore.pars.network',
+  at: {
+    bounty: '0x79254D4A9286FBd65E7177440Be20f00934c33c2',
+    governor: '0x62Ea1B27CDD922dbAaE0572f4CD4862Ca939C24c',
+    safe: '0x4CEA4ac1C874a340B06e0422E77a477463C3a542',
+  },
 }
 
 export const PARS: Brand = {
@@ -80,10 +86,6 @@ export const PARS: Brand = {
   // Served from this site's own root: the tab is the one surface where a
   // mark is the host's to choose, and pars.vote's is the khatam.
   icon: { svg: '/favicon.svg', touch: '/icon-180.png' },
-  venue: on('pars'),
-  // Pars's own IAM, and the only thing that says who a reader is. Measured
-  // rather than assumed from the estate's naming: pars.id serves an OpenID
-  // configuration and stamps `iss=https://pars.id`. No trailing slash — an
-  // issuer is compared as a literal string, and only one of the two is minted.
-  issuer: 'https://pars.id',
+  venue: CHAIN,
+  issuer: ISSUER,
 }
